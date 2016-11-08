@@ -1,0 +1,168 @@
+html {
+	font-family: sans-serif;
+	text-align: center;
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+}
+
+.bg {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: -1;
+	background-image: linear-gradient(41deg, #05d7f5, #295f67);
+	background-size: cover;
+}
+
+body {
+	height: 100%;
+	margin: 1em 8px;
+}
+main {
+	background-color: #e5e5e5;
+	max-width: 600px;
+	margin: 0 auto;
+	border-radius: 4px;
+	color: #5d5d5d;
+	box-shadow: 0px 0px 8px #706f6f;
+}
+
+h1 {
+	font-size: 1.5em;
+	margin: 0;
+	padding: 2em 0 1.5em;
+}
+
+ol {
+	min-height: 300px;
+	margin-top: 25px;
+	padding: 0;
+	list-style: none;
+}
+
+ol li {
+	position: relative;
+	margin-bottom: 0.5em;
+	background-color: white;
+	margin: 10px 23px;
+	padding: 20px 20px 20px 60px;
+	text-align: left;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.43);
+}
+
+.toggle-completed {
+	display: block;
+	position: absolute;
+	top: 50%;
+	margin-top: -7.5px;
+	left: 20px;
+	width: 15px;
+	height: 15px;
+	border: 1px solid rgba(0, 0, 0, 0.36);
+	outline: none;
+	-webkit-appearance: none;
+}
+
+input[checked="checked"] {
+	background-image: url('img/tick.svg')
+}
+
+.change-task, .delete-task {
+	display: block;
+	position: absolute;
+	top: 50%;
+	margin-top: -7.5px;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}
+
+.change-task {
+	right: 42px;
+	background-image: url('img/pen.svg');
+	background-size: cover;
+}
+
+.delete-task {
+	right: 20px;
+}
+
+.delete-task::before,
+.delete-task::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	width: 15px;
+	height: 1px;
+	background-color: #000;
+
+}
+
+.delete-task::before {
+	transform: rotateZ(45deg);	
+}
+
+.delete-task::after {
+	transform: rotateZ(-45deg);	
+}
+
+.warning {
+	margin-left: -20px;
+	line-height: 1.8;
+}
+
+.buttons {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+button {
+	background-color: #4883e7;
+	border: 0;
+	padding: 10px 15px;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: white;
+	letter-spacing: 0.3px;
+	margin: 2px;
+	cursor: pointer;
+	box-shadow: 1px 1px 2px #515050;
+	transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+	box-shadow: 1px 4px 8px #515050;
+}
+
+button:focus {
+	box-shadow: 0px 0px 10px 2px #6be2ff;
+}
+
+.add-task-input {
+	width: 300px;
+	margin-top: 20px;
+	padding: 10px 15px;
+}
+
+.add-task-btn {
+	margin-top: 20px;
+	padding: 12px 15px;
+}
+
+.copyright {
+	padding: 1em 0 2em;
+	font-style: italic;
+	font-size: 14px;
+}
+
+.copyright a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #4883e7;
+}

@@ -3,183 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Todo Exercise</title>
-	<style>
-		html {
-			font-family: sans-serif;
-			text-align: center;
-			position: relative;
-			height: 100%;
-			overflow: hidden;
-		}
-		
-		.bg {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			z-index: -1;
-			background-image: linear-gradient(41deg, #05d7f5, #295f67);
-			background-size: cover;
-		}
-
-		body {
-			height: 100%;
-			margin: 1em 8px;
-		}
-		main {
-			background-color: #e5e5e5;
-			max-width: 600px;
-			margin: 0 auto;
-			border-radius: 4px;
-			color: #5d5d5d;
-			box-shadow: 0px 0px 8px #706f6f;
-		}
-
-		h1 {
-			font-size: 1.5em;
-			margin: 0;
-			padding: 2em 0 1.5em;
-		}
-
-		ol {
-			min-height: 300px;
-			background-color: white;
-			margin: 23px;
-			padding: 20px 20px 20px 40px;
-			text-align: left;
-		}
-
-		ol li {
-			margin-bottom: 0.5em;
-		}
-
-		.warning {
-			margin-left: -20px;
-		}
-
-		.buttons {
-			display: flex;
-			justify-content: center;
-			align-items: flex-start;
-			flex-wrap: wrap;
-		}
-
-		button {
-			background-color: #4883e7;
-			border: 0;
-			padding: 10px 15px;
-			text-transform: uppercase;
-			font-size: 12px;
-			color: white;
-			letter-spacing: 0.3px;
-			margin: 2px;
-			cursor: pointer;
-			box-shadow: 1px 1px 2px #515050;
-			transition: all 0.1s ease-in-out;
-		}
-
-		button:hover {
-			box-shadow: 1px 4px 8px #515050;
-		}
-
-		.copyright {
-			padding: 1em 0 2em;
-			font-style: italic;
-			font-size: 14px;
-		}
-
-		.copyright a {
-			text-decoration: none;
-			font-weight: bold;
-			color: #4883e7;
-		}
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div class="bg"></div>
 	<main>
 		<h1>- To Do List -</h1>
 		<div class="buttons">
-		<button id="display">Show Tasks</button>
-			<button id="add">Add Task</button>
-			<button id="change">Change Task</button>
-			<button id="delete">Delete Task</button>
-			<button id="deleteAll">Delete All</button>
+			<button onclick="handlers.changeTodos()">Change Task</button>
+			<button onclick="handlers.deleteAll()">Delete All</button>
+		</div>
+		<div class="buttons">		
+			<input id="addTaskInput" type="text" placeholder="Add a task" class="add-task-input"></input>
+			<button class="add-task-btn" onclick="handlers.addTodos()">Add Task</button>
 		</div>
 		<ol id="todoList"></ol>
 		<p class="copyright">Coded by <a href="http://radekpalisa.com">Radek Palisa</a></p>
 	</main>
 
-	<script>
-
-	var todos = [];
-
-	function displayTodos(){
-		var items = document.getElementById('todoList');
-
-		if (todos.length == 0) {
-			items.innerHTML = '<span class="warning">Sorry but there is nothing to do. Add some tasks with Add Task Button.</span>';
-		} else {
-
-			// remove all items before inserting new set
-			while (items.firstChild) {
-				items.removeChild(items.firstChild);
-			}
-
-			// loop through and array and insert each item into li tag
-			for (var i = 0; i < todos.length; i++ ) {
-				var item = document.createElement("li");
-				item.innerHTML = todos[i];
-				items.appendChild(item);
-			}
-		}
-	}
-
-	// Display Tasks
-	var displayButton = document.getElementById('display');
-	displayButton.addEventListener('click', displayTodos);
-
-	// Add Tasks
-	function addTodos() {
-		var addPrompt = prompt('What task you want to add?', '');
-		todos.push(addPrompt);
-		displayTodos();
-	}
-
-	var addButton = document.getElementById('add');
-	addButton.addEventListener('click', addTodos);
-
-	// Change Tasks
-	function changeTodos() {
-		var changePromptA = (prompt('Which task you want to modify? Locate the task by its order in the list, write a number without a dot.', 'e.g. 1, 2, 3...')) - 1;
-		var changePromptB = prompt('Modify the task', '');
-		todos[changePromptA] = changePromptB;
-		displayTodos();
-	}
-
-	var changeButton = document.getElementById('change');
-	changeButton.addEventListener('click', changeTodos);
-
-	// Delete Task
-	function deleteTodos() {
-		var deletePrompt = (prompt('Which task you want to delete? Locate the task by its order in the list, write a number without a dot.', 'e.g. 1, 2, 3...')) - 1;
-		todos.splice(deletePrompt, 1);
-		displayTodos();
-	}
-
-	var deleteButton = document.getElementById('delete');
-	deleteButton.addEventListener('click', deleteTodos);
-
-	// Delete all
-	function deleteAll() {
-		todos = [];
-		displayTodos();
-	}
-
-	var deleteAllButton = document.getElementById('deleteAll');
-	deleteAllButton.addEventListener('click', deleteAll);
-
-	</script>
+	<script src="custom.js"></script>
 </body>
 </html>
